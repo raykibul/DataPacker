@@ -19,4 +19,5 @@ from django.urls import path,include
 urlpatterns = [
     path('labibvai/', admin.site.urls),
     path('', include('auth.urls')),
+    path('api/', include('api.urls')),
 ]
