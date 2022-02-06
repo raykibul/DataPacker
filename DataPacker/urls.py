@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('labibvai/', admin.site.urls),
-    path('', include('auth.urls')),
-    path('api/', include('api.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('api.urls')),
 ]

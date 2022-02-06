@@ -23,6 +23,9 @@ class Question(models.Model):
     serial = models.CharField(max_length=11)
     image = models.CharField(max_length=200)
     survey_id = models.ForeignKey(Survey, blank=True, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+	    return self.answer_type
 class Available_Options(models.Model):
     question_id = models.ForeignKey(Question, blank=True, null=True, on_delete=models.SET_NULL)
     value = models.CharField(max_length=500)

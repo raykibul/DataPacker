@@ -1,6 +1,8 @@
 from rest_framework import serializers
-from .models import *
-class Available_OptionsSerializer(serializers.Serializer):
+
+from .models import Surveyor
+
+class SurveyorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Available_Options
-        fields = ('value')
+        model = Surveyor
+        fields = ('username', 'password','zilla','upazilla','phoneNumber','name')
