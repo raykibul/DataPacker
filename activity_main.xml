@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    >
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5sp"
+        android:rowCount="3"
+        android:columnCount="2">
+
+
+        <Button
+            android:id="@+id/conductsurvey"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="10sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:background="#e600e6"
+            android:text="Conduct Survey" />
+
+        <Button
+            android:id="@+id/prev_survery"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#9900ff"
+            android:layout_margin="10sp"
+            android:textColor="@color/black"
+            android:text="Previous Survery"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/user_details"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="10sp"
+            android:background="#9900ff"
+            android:textStyle="bold"
+            android:text="User details" />
+        <Button
+            android:id="@+id/instructions"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="10sp"
+            android:background="#aa80ff"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Instructions" />
+        <Button
+            android:id="@+id/logout"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="10sp"
+            android:textStyle="bold"
+            android:background="#9900ff"
+            android:text="Logout" />
+
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
