@@ -2,6 +2,8 @@ from rest_framework import serializers
 
 from .models import *
 
+from users.models import NewUser
+
 class SurveyorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = NewUser
