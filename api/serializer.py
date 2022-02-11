@@ -4,8 +4,8 @@ from .models import *
 
 class SurveyorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Surveyor
-        fields = ('username', 'password','zilla','upazilla','phoneNumber','name')
+        model = NewUser
+        fields = ('user_name', 'zilla','upazilla','phoneNumber','name','email')
 class Available_OptionsSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
