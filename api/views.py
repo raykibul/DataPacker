@@ -49,9 +49,9 @@ def saveAnswer(request):
             if deserializedData.is_valid():
                 #print("valid")
                 deserializedData.save()
-                message = {'msg' : 'successfully synced'}
-                jsonData = JSONRenderer().render(message)
             else:
                 return HttpResponse(JSONRenderer().render(deserializedData.errors), content_type='application/json')
+        message = {'msg' : 'successfully synced'}
+        jsonData = JSONRenderer().render(message)
         return HttpResponse(jsonData, content_type = 'application/json')
         
