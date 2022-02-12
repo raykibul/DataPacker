@@ -1,11 +1,18 @@
+import io
+import json
+
 from django.shortcuts import render
 from django.db.models import Prefetch
-# Create your views here.
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 from rest_framework import viewsets
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
 
 from .serializer import *
 from .models import *
-
+# Create your views here.
 class SurveyorViewSet(viewsets.ModelViewSet):
     queryset = Surveyor.objects.all().order_by('username')
     serializer_class = SurveyorSerializer
@@ -25,4 +32,26 @@ class Survey_InfoViewSet(viewsets.ModelViewSet):
     serializer_class = Survey_InfoSerializer
 class Survey_AnswerViewSet(viewsets.ModelViewSet):
     queryset = Survey_Answer.objects.all()
-    serializer_class = Survey_AnswerSerializer                    
+    serializer_class = Survey_AnswerSerializer
+
+#JSONtoDB
+@csrf_exempt
+def saveAnswer(request):
+    if request.method == 'POST':
+        jsonData = request.body
+        #stream = io.BytesIO(jsonData)
+        #data = JSONParser().parse(stream)
+        data=json.loads(jsonData)
+        for answers in data['answers']:
+            #print(answers)
+            deserializedData = Survey_AnswerSerializer(data=answers)
+            #print(deserializedData)
+            if deserializedData.is_valid():
+                #print("valid")
+                deserializedData.save()
+                message = {'msg' : 'successfully synced'}
+                jsonData = JSONRenderer().render(message)
+            else:
+                return HttpResponse(JSONRenderer().render(deserializedData.errors), content_type='application/json')
+        return HttpResponse(jsonData, content_type = 'application/json')
+        
