@@ -7,15 +7,12 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import viewsets
-<<<<<<< HEAD
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-=======
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from users.models import NewUser
->>>>>>> alvi_api
 
 from .serializer import *
 from .models import *
@@ -41,7 +38,6 @@ class Survey_InfoViewSet(viewsets.ModelViewSet):
     serializer_class = Survey_InfoSerializer
 class Survey_AnswerViewSet(viewsets.ModelViewSet):
     queryset = Survey_Answer.objects.all()
-<<<<<<< HEAD
     serializer_class = Survey_AnswerSerializer
 
 #JSONtoDB
@@ -65,6 +61,4 @@ def saveAnswer(request):
         jsonData = JSONRenderer().render(message)
         return HttpResponse(jsonData, content_type = 'application/json')
         
-=======
     serializer_class = Survey_AnswerSerializer                    
->>>>>>> alvi_api
