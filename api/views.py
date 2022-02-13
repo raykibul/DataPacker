@@ -17,11 +17,12 @@ from users.models import NewUser
 from .serializer import *
 from .models import *
 # Create your views here.
-class SurveyorViewSet(viewsets.ModelViewSet):
+class SurveyorViewSet(APIView):
      def post(self,request):
         queryset = NewUser.objects.get(email=request.user.email)
         serializer_class = SurveyorSerializer
         return Response(serializer_class(queryset, many=False).data)
+
 class SurveyViewSet(viewsets.ModelViewSet):
     queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related(
                "available_options_set")))
