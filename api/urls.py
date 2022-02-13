@@ -26,3 +26,4 @@ urlpatterns = [
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('saveanswer/', views.saveAnswer, name='save answer'),
     path('surveyor/',views.SurveyorViewSet.as_view())
+]
