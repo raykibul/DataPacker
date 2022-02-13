@@ -7,15 +7,24 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import viewsets
+<<<<<<< HEAD
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
+=======
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from users.models import NewUser
+>>>>>>> alvi_api
 
 from .serializer import *
 from .models import *
 # Create your views here.
 class SurveyorViewSet(viewsets.ModelViewSet):
-    queryset = Surveyor.objects.all().order_by('username')
-    serializer_class = SurveyorSerializer
+     def post(self,request):
+        queryset = NewUser.objects.get(email=request.user.email)
+        serializer_class = SurveyorSerializer
+        return Response(serializer_class(queryset, many=False).data)
 class SurveyViewSet(viewsets.ModelViewSet):
     queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related(
                "available_options_set")))
@@ -32,6 +41,7 @@ class Survey_InfoViewSet(viewsets.ModelViewSet):
     serializer_class = Survey_InfoSerializer
 class Survey_AnswerViewSet(viewsets.ModelViewSet):
     queryset = Survey_Answer.objects.all()
+<<<<<<< HEAD
     serializer_class = Survey_AnswerSerializer
 
 #JSONtoDB
@@ -55,3 +65,6 @@ def saveAnswer(request):
         jsonData = JSONRenderer().render(message)
         return HttpResponse(jsonData, content_type = 'application/json')
         
+=======
+    serializer_class = Survey_AnswerSerializer                    
+>>>>>>> alvi_api

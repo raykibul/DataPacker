@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 )
 
 router = routers.DefaultRouter()
-router.register(r'surveyors', views.SurveyorViewSet)
+#router.register(r'surveyors', views.SurveyorViewSet)
 router.register(r'survey', views.SurveyViewSet)
 router.register(r'question', views.QuestionViewSet)
 router.register(r'available_options', views.Available_OptionsViewSet)
@@ -24,5 +24,10 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+<<<<<<< HEAD
     path('saveanswer/', views.saveAnswer, name='save answer'),
 ]
+=======
+    path('surveyor/',views.SurveyorViewSet.as_view())
+]
+>>>>>>> alvi_api
