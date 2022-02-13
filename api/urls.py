@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 )
 
 router = routers.DefaultRouter()
-router.register(r'surveyors', views.SurveyorViewSet)
+#router.register(r'surveyors', views.SurveyorViewSet)
 router.register(r'survey', views.SurveyViewSet)
 router.register(r'question', views.QuestionViewSet)
 router.register(r'available_options', views.Available_OptionsViewSet)
