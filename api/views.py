@@ -18,17 +18,15 @@ from .serializer import *
 from .models import *
 # Create your views here.
 class SurveyorViewSet(APIView):
-    def post(self,request):
+     def post(self,request):
         queryset = NewUser.objects.get(email=request.user.email)
         serializer_class = SurveyorSerializer
         return Response(serializer_class(queryset, many=False).data)
-class SurveyViewSet(APIView):
-
-    def post(self,request):
-        queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related("available_options_set")))
-        serializer_class = SurveySerializer
-        return Response(serializer_class(queryset, many=False).data)
-        
+class SurveyViewSet(viewsets.ModelViewSet):
+    queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related(
+               "available_options_set")))
+               
+    serializer_class = SurveySerializer
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer

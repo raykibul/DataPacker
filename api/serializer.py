@@ -8,7 +8,6 @@ class SurveyorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = NewUser
         fields = ('user_name', 'zilla','upazilla','phoneNumber','name','email')
-
 class Available_OptionsSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
@@ -22,11 +21,13 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('question_text','answer_type','serial','image','survey_id','available_options')
 
 class SurveySerializer(serializers.HyperlinkedModelSerializer):
-    question_set=QuestionSerializer(many=False,read_only=True)
+    question_set=QuestionSerializer(many=True,read_only=True)
     class Meta:
         model = Survey
         fields = ('id','name','question_set')
- 
+
+
+    
 class Survey_InfoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Survey_Info
