@@ -8,19 +8,20 @@ class SurveyorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = NewUser
         fields = ('user_name', 'zilla','upazilla','phoneNumber','name','email')
-class Available_OptionsSerializer(serializers.HyperlinkedModelSerializer):
+        
+class Available_OptionsSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Available_Options
         fields = ('question_id','value','post_question')
 
-class QuestionSerializer(serializers.HyperlinkedModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
     available_options= Available_OptionsSerializer(many=True, read_only=True,source='available_options_set')
     class Meta:
         model = Question
         fields = ('question_text','answer_type','serial','image','survey_id','available_options')
 
-class SurveySerializer(serializers.HyperlinkedModelSerializer):
+class SurveySerializer(serializers.ModelSerializer):
     question_set=QuestionSerializer(many=True,read_only=True)
     class Meta:
         model = Survey

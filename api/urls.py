@@ -9,7 +9,7 @@ from rest_framework_simplejwt.views import (
 
 router = routers.DefaultRouter()
 #router.register(r'surveyors', views.SurveyorViewSet)
-router.register(r'survey', views.SurveyViewSet)
+#router.register(r'survey', views.SurveyViewSet,basename='survey')
 router.register(r'question', views.QuestionViewSet)
 router.register(r'available_options', views.Available_OptionsViewSet)
 router.register(r'survey_info', views.Survey_InfoViewSet)
@@ -25,5 +25,6 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('saveanswer/', views.saveAnswer, name='save answer'),
-    path('surveyor/',views.SurveyorViewSet.as_view())
+    path('surveyor/',views.SurveyorViewSet.as_view()),
+    path('survey/',views.SurveyViewSet.as_view()),
 ]

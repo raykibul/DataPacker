@@ -22,11 +22,20 @@ class SurveyorViewSet(APIView):
         queryset = NewUser.objects.get(email=request.user.email)
         serializer_class = SurveyorSerializer
         return Response(serializer_class(queryset, many=False).data)
-class SurveyViewSet(viewsets.ModelViewSet):
-    queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related(
+
+
+class SurveyViewSet(APIView):
+     
+    def post(self,request):
+        queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related(
                "available_options_set")))
+        serializer = SurveySerializer(queryset, many= True)
+        return Response(serializer.data)
+     
+    # queryset = Survey.objects.all().prefetch_related(Prefetch('question_set',queryset=Question.objects.prefetch_related(
+    #            "available_options_set")))
                
-    serializer_class = SurveySerializer
+    # serializer_class = SurveySerializer
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
