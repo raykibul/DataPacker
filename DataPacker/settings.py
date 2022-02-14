@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-dc=2vr(n=$3xh9my(2kfp-c1x0ja^##((5(jx@4mq0k1sy8c*9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['datapacker.raykibul.com','www.datapacker.raykibul.com','localhost']
+ALLOWED_HOSTS = ['datapacker.raykibul.com','www.datapacker.raykibul.com','127.0.0.1']
 
 
 # Application definition

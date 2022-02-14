@@ -17,7 +17,7 @@ from users.models import NewUser
 from .serializer import *
 from .models import *
 # Create your views here.
-class SurveyorViewSet(viewsets.ModelViewSet):
+class SurveyorViewSet(APIView):
      def post(self,request):
         queryset = NewUser.objects.get(email=request.user.email)
         serializer_class = SurveyorSerializer
